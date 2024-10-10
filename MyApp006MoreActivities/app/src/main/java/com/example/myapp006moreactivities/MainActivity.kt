@@ -26,6 +26,5 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("NICK_NAME", nickname)
             startActivity(intent)
         }
-        }
     }
 }
