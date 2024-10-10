@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,8 +25,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapp005jetpackcompose.ui.theme.MyApp005JetpackComposeTheme
@@ -66,6 +70,9 @@ fun ComposePerson() {
     var age by remember { mutableStateOf("") }
     var place by remember { mutableStateOf("") }
     var resultText by remember { mutableStateOf("") }
+    var username by remember { mutableStateOf( "") }
+    var password by remember { mutableStateOf("") }
+    var psc by remember { mutableStateOf("") }
 
 
     // Přidáme Scaffold, abychom mohli přidat TopAppBar
@@ -73,10 +80,12 @@ fun ComposePerson() {
         topBar = {
             TopAppBar(
                 title = {
-                    Text(
-                        "Moje Aplikace",
-                        color = Color.White
-                    )
+                    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center){
+                        Text(
+                            "Moje Aplikace",
+                            color = Color.White
+                        )
+                    }
                 }, // Nastaví barvu textu na bílou
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color.DarkGray,  // Nastaví pozadí na černé
@@ -97,31 +106,52 @@ fun ComposePerson() {
                 value = name,
                 onValueChange = { name = it },
                 label = { Text("Jméno") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true
             )
             OutlinedTextField(
                 value = surname,
                 onValueChange = { surname = it },
                 label = { Text("Příjmení") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true
             )
             OutlinedTextField(
                 value = age,
-                onValueChange = {
+                onValueChange = { ageInput ->
                     // Omezíme vstup na číslice a kontrolujeme, že číslo není větší než 123
-                    if (it.all { char -> char.isDigit() } && it.toIntOrNull()
+                    if (ageInput.all { char -> char.isDigit() } && ageInput.toIntOrNull()
                             ?.let { it <= 123 } == true) {
-                        age = it
+                        age = ageInput
                     }
                 },
                 label = { Text("Věk (hodnota menší než 123]") },
                 modifier = Modifier.fillMaxWidth()
             )
+
             OutlinedTextField(
                 value = place,
                 onValueChange = { place = it },
                 label = { Text("Bydliště") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true
+            )
+
+            OutlinedTextField(
+                value = username,
+                onValueChange = { username = it },
+                label = { Text("Přihlašovací jméno") },
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true
+            )
+
+            OutlinedTextField(
+                value = password,
+                onValueChange = { password = it },
+                label = { Text("Password") },
+                modifier = Modifier.fillMaxWidth(),
+                visualTransformation = PasswordVisualTransformation(),
+                singleLine = true
             )
 
             // Tlačítka Odeslat a Vymazat
@@ -132,7 +162,7 @@ fun ComposePerson() {
                 Button(
                     onClick = {
                         resultText =
-                            "Jmenuji se $name $surname. Je mi $age let a moje bydliště je $place."
+                            "Jmenuji se $name $surname. Je mi $age let a moje bydliště je $place. Mé přihlašovací jméno je $username."
                     },
                     modifier = Modifier.weight(1f)
                 ) {
@@ -153,7 +183,7 @@ fun ComposePerson() {
                         contentColor = Color.White  // Barva textu na tlačítku
                     )
                 ) {
-                    Text("Vymazat")
+                    Text("Vymazat")}
 
                     // Výsledek
                     if (resultText.isNotEmpty()) {
@@ -162,12 +192,11 @@ fun ComposePerson() {
                             style = MaterialTheme.typography.bodyLarge,
                             modifier = Modifier.padding(top = 16.dp)
                         )
-
                     }
-                }}   
+                }
+            }
         }
     }
-}
 
 @Preview(showBackground = true)
 @Composable
