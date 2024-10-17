@@ -1,5 +1,7 @@
 package com.example.myapp004toastsnackbar
 
+import android.app.Activity
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -7,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapp004toastsnackbar.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +17,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         // Inicializace ViewBinding
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -28,7 +30,21 @@ class MainActivity : AppCompatActivity() {
             
             // akce pro tlacitko Zobrazit Snackbar
 
-            
+            binding.btnShowSnackBar.setOnClickListener {
+                Snackbar.make(binding.root, "Já jsem SNACKBAR", Snackbar.LENGTH_SHORT)
+
+                    .setDuration(7000)
+                    .setBackgroundTint(Color.parseColor("#FF3578"))
+                    .setTextColor(Color.BLACK)
+                    .setActionTextColor(Color.WHITE)
+                    .setAction("Zavrit"){
+                        Toast.makeText(this, "Zaviram SNACKBAR", Toast.LENGTH_LONG).show()
+                    }
+                    .show()
+            }
+
+
+
             
         }
     }
