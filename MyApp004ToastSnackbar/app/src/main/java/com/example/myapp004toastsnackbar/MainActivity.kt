@@ -2,6 +2,8 @@ package com.example.myapp004toastsnackbar
 
 import android.app.Activity
 import android.graphics.Color
+import android.graphics.Paint
+import android.graphics.drawable.ShapeDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.ImageView
@@ -38,6 +40,16 @@ class MainActivity : AppCompatActivity() {
             val toastIcon = customToastLayout.findViewById<ImageView>(R.id.toast_icon)
             toastIcon.setImageResource(R.drawable.ic_your_icon)
             //toastIcon.setBackgroundColor(Color.WHITE)
+
+            customToastLayout.setPadding(8, 8, 8, 8)
+
+            // ohraniceni
+            val strokeDrawable = ShapeDrawable()
+            strokeDrawable.paint.color = Color.BLACK // Barva ohraničení
+            strokeDrawable.paint.strokeWidth = 2f // Tloušťka ohraničení
+            strokeDrawable.paint.style = Paint.Style.STROKE
+
+            customToastLayout.background = strokeDrawable
 
             val customToast = Toast(this)
             customToast.duration = Toast.LENGTH_SHORT
