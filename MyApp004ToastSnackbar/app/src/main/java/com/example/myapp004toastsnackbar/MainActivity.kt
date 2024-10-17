@@ -3,6 +3,9 @@ package com.example.myapp004toastsnackbar
 import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -24,10 +27,23 @@ class MainActivity : AppCompatActivity() {
 
         //nastaveni akce pro tlacitko Toast
         binding.btnShowToast.setOnClickListener {
-            //nepouzivat velke T / to se pouyvia pro komponentu
-            val toast = Toast.makeText(this, "Nazdar - mam hlad", Toast.LENGTH_LONG)
-            toast.show()
-            
+            //nepouzivat velke T / to se pouyvia pro komponent
+            val layoutInflater = LayoutInflater.from(this)
+            val customToastLayout = layoutInflater.inflate(R.layout.custom_toast, null)
+
+            val toastText = customToastLayout.findViewById<TextView>(R.id.toast_text)
+            toastText.text = "Máš hlad?"
+            //toastText.setTextColor(Color.BLACK)
+
+            val toastIcon = customToastLayout.findViewById<ImageView>(R.id.toast_icon)
+            toastIcon.setImageResource(R.drawable.ic_your_icon)
+            //toastIcon.setBackgroundColor(Color.WHITE)
+
+            val customToast = Toast(this)
+            customToast.duration = Toast.LENGTH_SHORT
+            customToast.view = customToastLayout
+            customToast.show() }
+
             // akce pro tlacitko Zobrazit Snackbar
 
             binding.btnShowSnackBar.setOnClickListener {
@@ -37,15 +53,10 @@ class MainActivity : AppCompatActivity() {
                     .setBackgroundTint(Color.parseColor("#FF3578"))
                     .setTextColor(Color.BLACK)
                     .setActionTextColor(Color.WHITE)
-                    .setAction("Zavrit"){
+                    .setAction("Zavřít"){
                         Toast.makeText(this, "Zaviram SNACKBAR", Toast.LENGTH_LONG).show()
                     }
                     .show()
             }
-
-
-
-            
         }
     }
-}
