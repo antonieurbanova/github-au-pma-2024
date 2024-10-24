@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MyApp007Fragments</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment_1">Zdravim z Fragmentu 1. </string>
+
+    <string name="hello_blank_fragment_2">Zdravim z Fragmentu 2. Ja jsem lepsi </string>
+
+
 </resources>
