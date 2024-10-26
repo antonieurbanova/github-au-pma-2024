@@ -24,6 +24,4 @@
         android:layout_gravity="bottom|center_horizontal"
         android:layout_margin="20dp"/>
 
-
-
 </FrameLayout>

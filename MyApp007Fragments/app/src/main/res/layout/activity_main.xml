@@ -8,7 +8,6 @@
     tools:context=".MainActivity"
     android:padding="20dp">
 
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/FragmentContainer"
         android:layout_width="match_parent"
