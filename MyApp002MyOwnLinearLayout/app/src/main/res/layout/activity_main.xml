@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pozvánka"
+        android:textSize="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="15dp"  />
+        <!--app:layout_constraintBottom_toBottomOf="parent"
+        //app:layout_constraintEnd_toEndOf="parent"
+        //app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"-->
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:inputType="text"
+        android:hint="Název akce"
+        />
+
+    <EditText
+        android:id="@+id/etPlace"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:inputType="text"
+        android:hint="Místo konání"
+        />
+
+    <EditText
+        android:id="@+id/etDate"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:inputType="date"
+        android:hint="Datum konání"
+        />
+
+    <EditText
+        android:id="@+id/etTime"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:inputType="time"
+        android:hint="Čas konání"
+        />
+
+<LinearLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:gravity="center"
+    android:padding="15dp">
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vymazat"
+        />
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Potvrdit"
+        />
+
+</LinearLayout>
+
+</LinearLayout>
