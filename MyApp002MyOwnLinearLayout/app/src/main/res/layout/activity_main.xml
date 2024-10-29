@@ -13,9 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pozvánka"
+        android:textStyle="bold"
         android:textSize="20dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="15dp"  />
+        android:layout_marginTop="15dp"
+        android:textColor="@color/fialova"
+        />
         <!--app:layout_constraintBottom_toBottomOf="parent"
         //app:layout_constraintEnd_toEndOf="parent"
         //app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +37,7 @@
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:inputType="text"
-        android:hint="Místo konání"
+        android:hint="Adresa konání"
         />
 
     <EditText
@@ -54,10 +57,10 @@
         />
 
 <LinearLayout
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:orientation="horizontal"
-android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
     android:padding="15dp">
 
     <Button
@@ -65,6 +68,7 @@ android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vymazat"
+        android:backgroundTint="@color/levandule"
         />
 
     <Button
@@ -72,8 +76,28 @@ android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Potvrdit"
+        android:backgroundTint="@color/levandule"
         />
 
 </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="15dp"
+        android:background="@color/levandulelight">
+
+        <TextView
+            android:id="@+id/tvInvitation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/fialova"
+            android:hint="Zde se po potvrzení informací vygeneruje Vaše pozvánka."
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

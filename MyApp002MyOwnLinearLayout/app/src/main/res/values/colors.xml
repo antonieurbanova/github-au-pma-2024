@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="fialova">#a834eb</color>
+    <color name="levandule">#a979bd</color>
+    <color name="levandulelight">#c3adcc</color>
 </resources>
