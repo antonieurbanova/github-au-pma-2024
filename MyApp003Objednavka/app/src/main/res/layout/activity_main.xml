@@ -1,19 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <TextView
+        android:id="@+id/tvNadpis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Vyberte základní příchuť cupcaku:"
+        android:textAlignment="center" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rgCupcakes"
+        android:orientation="horizontal">
+
+       <RadioButton
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/rbVanilla"
+           android:text="Vanilkový"
+           android:checked="true"/>
+
+        <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rbChoco"
+        android:text="Čokoládový" />
+
+        <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rbRed"
+        android:text="Jahodový" />
+
+        </RadioGroup>
+
+<CheckBox
+android:id="@+id/cdPosypka"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Barevná posypka"/>
+
+    <CheckBox
+        android:id="@+id/cdKousky"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kouky čokolády"/>
+
+    <CheckBox
+        android:id="@+id/cdJahoda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Čerstvá jahoda"/>
+
+<Button
+    android:id="@+id/btnObjednavka"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Objednat cupcake"/>
+
+    <TextView
+        android:id="@+id/tvObjednavka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Souhrn objednávky: "/>
+
+    <ImageView
+        android:id="@+id/ivCupcake"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/choco"
+        android:scaleType="centerInside"/>
+
+</LinearLayout>
