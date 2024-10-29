@@ -42,6 +42,16 @@ class MainActivity : AppCompatActivity() {
                     (if(kousky) "; kousky čokolády" else "")
 
             binding.tvObjednavka.text = objednavkaText
+
+            binding.rbChoco.setOnClickListener {
+                binding.ivCupcake.setImageResource(R.drawable.choco)
+            }
+            binding.rbRed.setOnClickListener {
+                binding.ivCupcake.setImageResource(R.drawable.red)
+            }
+            binding.rbVanilla.setOnClickListener {
+                binding.ivCupcake.setImageResource(R.drawable.vanilla)
+            }
         }
 
     }
