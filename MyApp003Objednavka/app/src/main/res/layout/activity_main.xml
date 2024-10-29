@@ -5,9 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="20dp"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/tvNadpis"
@@ -17,67 +17,67 @@
         android:textAlignment="center" />
 
     <RadioGroup
+        android:id="@+id/rgCupcakes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/rgCupcakes"
         android:orientation="horizontal">
 
-       <RadioButton
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:id="@+id/rbVanilla"
-           android:text="Vanilkový"
-           android:checked="true"/>
+        <RadioButton
+            android:id="@+id/rbVanilla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Vanilkový" />
 
         <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rbChoco"
-        android:text="Čokoládový" />
+            android:id="@+id/rbChoco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Čokoládový" />
 
         <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rbRed"
-        android:text="Jahodový" />
+            android:id="@+id/rbRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jahodový" />
 
-        </RadioGroup>
-
-<CheckBox
-android:id="@+id/cdPosypka"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Barevná posypka"/>
+    </RadioGroup>
 
     <CheckBox
-        android:id="@+id/cdKousky"
+        android:id="@+id/cbPosypka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kouky čokolády"/>
+        android:text="Barevná posypka" />
 
     <CheckBox
-        android:id="@+id/cdJahoda"
+        android:id="@+id/cbKousky"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Čerstvá jahoda"/>
+        android:text="Kouky čokolády" />
 
-<Button
-    android:id="@+id/btnObjednavka"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Objednat cupcake"/>
+    <CheckBox
+        android:id="@+id/cbJahoda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Čerstvá jahoda" />
+
+    <Button
+        android:id="@+id/btnObjednavka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Objednat cupcake" />
 
     <TextView
         android:id="@+id/tvObjednavka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Souhrn objednávky: "/>
+        android:text="Souhrn objednávky: " />
 
     <ImageView
         android:id="@+id/ivCupcake"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/choco"
-        android:scaleType="centerInside"/>
+        android:scaleType="centerInside"
+        android:src="@drawable/choco" />
 
 </LinearLayout>
