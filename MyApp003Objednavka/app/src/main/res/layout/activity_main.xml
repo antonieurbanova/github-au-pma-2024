@@ -14,13 +14,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vyberte základní příchuť cupcaku:"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:padding="20dp"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        />
 
     <RadioGroup
         android:id="@+id/rgCupcakes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginLeft="30dp"
+        >
 
         <RadioButton
             android:id="@+id/rbVanilla"
@@ -47,31 +54,41 @@
         android:id="@+id/cbPosypka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Barevná posypka" />
+        android:text="Barevná posypka"
+        android:padding="10dp"
+        android:layout_marginLeft="30dp"/>
 
     <CheckBox
         android:id="@+id/cbKousky"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kouky čokolády" />
+        android:text="Kouky čokolády"
+        android:padding="10dp"
+        android:layout_marginLeft="30dp"/>
 
     <CheckBox
         android:id="@+id/cbJahoda"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Čerstvá jahoda" />
+        android:text="Čerstvá jahoda"
+        android:padding="10dp"
+        android:layout_marginLeft="30dp"/>
 
     <Button
         android:id="@+id/btnObjednavka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Objednat cupcake" />
+        android:text="Objednat cupcake"
+        android:backgroundTint="@color/myColor"
+        android:layout_marginLeft="30dp"/>
 
     <TextView
         android:id="@+id/tvObjednavka"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Souhrn objednávky: " />
+        android:text="Zde se po zobrazí souhrn objednávky"
+        android:textSize="15dp"
+        android:padding="20dp"/>
 
     <ImageView
         android:id="@+id/ivCupcake"

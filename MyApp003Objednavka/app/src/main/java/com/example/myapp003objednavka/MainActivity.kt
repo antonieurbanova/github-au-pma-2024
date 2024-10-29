@@ -26,6 +26,16 @@ class MainActivity : AppCompatActivity() {
 
         title = "Objednávka Cupcake"
 
+        binding.rbChoco.setOnClickListener {
+            binding.ivCupcake.setImageResource(R.drawable.choco)
+        }
+        binding.rbRed.setOnClickListener {
+            binding.ivCupcake.setImageResource(R.drawable.red)
+        }
+        binding.rbVanilla.setOnClickListener {
+            binding.ivCupcake.setImageResource(R.drawable.vanilla)
+        }
+
         binding.btnObjednavka.setOnClickListener {
             val cupcakeRbId = binding.rgCupcakes.checkedRadioButtonId
 
@@ -35,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             val jahoda = binding.cbJahoda.isChecked
             val kousky = binding.cbKousky.isChecked
 
-            val objednavkaText = "Souhrn objednávky" +
+            val objednavkaText = "Souhrn objednávky: " +
                     "${cupcake.text}" +
                     (if(posypka) "; barevná posypka" else "") +
                     (if(jahoda) "; čerstvá jahoda" else "") +
@@ -43,15 +53,6 @@ class MainActivity : AppCompatActivity() {
 
             binding.tvObjednavka.text = objednavkaText
 
-            binding.rbChoco.setOnClickListener {
-                binding.ivCupcake.setImageResource(R.drawable.choco)
-            }
-            binding.rbRed.setOnClickListener {
-                binding.ivCupcake.setImageResource(R.drawable.red)
-            }
-            binding.rbVanilla.setOnClickListener {
-                binding.ivCupcake.setImageResource(R.drawable.vanilla)
-            }
         }
 
     }
