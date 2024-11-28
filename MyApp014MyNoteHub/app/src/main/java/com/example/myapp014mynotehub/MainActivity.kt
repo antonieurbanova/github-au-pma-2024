@@ -34,6 +34,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        // Nastavení uživatelského rozhraní (filtry, řazení atd.)
+        setupUI()
+
+
         // Inicializace databáze
         database = NoteHubDatabaseInstance.getDatabase(this)
 
@@ -41,8 +45,6 @@ class MainActivity : AppCompatActivity() {
         //insertDefaultCategories()
         //insertDefaultTags()
 
-        // Nastavení uživatelského rozhraní (filtry, řazení atd.)
-        setupUI()
 
         // Inicializace RecyclerView
         binding.recyclerView.layoutManager = LinearLayoutManager(this)

@@ -138,6 +138,20 @@ fun ComposePerson() {
             )
 
             OutlinedTextField(
+                value = psc,
+                onValueChange = { newValue ->
+                    // vstup je peticiferne číslo - \\d musi byt cislice
+                    if (newValue.matches(Regex("^\\d{0,5}$"))) {
+                        psc = newValue
+                    }
+                },
+                label = { Text("PSČ (pěticiferné čislo") },
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true
+
+            )
+
+            OutlinedTextField(
                 value = username,
                 onValueChange = { username = it },
                 label = { Text("Přihlašovací jméno") },
@@ -162,7 +176,7 @@ fun ComposePerson() {
                 Button(
                     onClick = {
                         resultText =
-                            "Jmenuji se $name $surname. Je mi $age let a moje bydliště je $place. Mé přihlašovací jméno je $username."
+                            "Jmenuji se $name $surname. Je mi $age let a moje bydliště je $place, $psc, . Mé přihlašovací jméno je $username."
                     },
                     modifier = Modifier.weight(1f)
                 ) {
@@ -176,6 +190,7 @@ fun ComposePerson() {
                         age = ""
                         place = ""
                         resultText = ""
+                        psc = ""
                     },
                     modifier = Modifier.weight(1f),
                     colors = ButtonDefaults.buttonColors(
