@@ -41,8 +41,10 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerViewTasks.adapter = taskAdapter
 
         // Simulace načtení dat
-        loadTasks()
+        // loadTasks()
 
+    // Načtení úkolů z firestore db
+        loadTasksFromFirestore()
         // Nastavení logiky pro FloatingActionButton
 
         // Inicializace Firebase
@@ -51,12 +53,29 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun loadTasks() {
+    /* private fun loadTasks() {
         //tasks.add(Task("1", "Buy groceries", isCompleted = false, assignedTo = "Alice"))
         // tasks.add(Task("2", "Clean the house", isCompleted = false, assignedTo = ""))
         //tasks.add(Task("3", "Prepare presentation", isCompleted = true, assignedTo = "Bob"))
         taskAdapter.notifyDataSetChanged()
+    }*/
+
+    private fun loadTasksFromFirestore() {
+        firestore.collection("tasks").get()
+            .addOnSuccessListener { result ->
+                tasks.clear()
+                for (document in result) {
+                    val task = document.toObject(Task::class.java)
+                    tasks.add(task)
+                }
+                taskAdapter.notifyDataSetChanged()
+                println("Tasks loaded from Firestore")
+            }
+            .addOnFailureListener { e ->
+                println("Error loading tasks: ${e.message}")
+            }
     }
+
 
     private fun showAddTaskDialog() {
         val builder = AlertDialog.Builder(this)
