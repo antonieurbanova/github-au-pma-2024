@@ -51,6 +51,8 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         println("Firebase initialized successfully")
 
+        listenToTaskUpdates()
+
     }
 
     /* private fun loadTasks() {
@@ -76,6 +78,21 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    private fun listenToTaskUpdates() {
+        firestore.collection("tasks").addSnapshotListener { snapshots, e ->
+            if (e != null) {
+                println("Listen failed: ${e.message}")
+                return@addSnapshotListener
+            }
+
+            tasks.clear()
+            for (document in snapshots!!) {
+                val task = document.toObject(Task::class.java)
+                tasks.add(task)
+            }
+            taskAdapter.notifyDataSetChanged()
+        }
+    }
 
     private fun showAddTaskDialog() {
         val builder = AlertDialog.Builder(this)
