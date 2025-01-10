@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.elevatorinspector.HomeFragment"
+        android:label="Home">
+        <action
+            android:id="@+id/action_to_addElevator"
+            app:destination="@id/addElevatorFragment" />
+        <action
+            android:id="@+id/action_to_addInspection"
+            app:destination="@id/addInspectionFragment" />
+        <action
+            android:id="@+id/action_to_calendar"
+            app:destination="@id/calendarFragment" />
+        <action
+            android:id="@+id/action_to_elevatorList"
+            app:destination="@id/elevatorListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addElevatorFragment"
+        android:name="com.example.elevatorinspector.AddElevatorFragment"
+        android:label="Přidat nový výtah" />
+
+    <fragment
+        android:id="@+id/addInspectionFragment"
+        android:name="com.example.elevatorinspector.AddInspectionFragment"
+        android:label="Evidovat proběhlou OZ nebo OP" />
+
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.elevatorinspector.CalendarFragment"
+        android:label="Zobrazit kalendář" />
+
+    <fragment
+        android:id="@+id/elevatorListFragment"
+        android:name="com.example.elevatorinspector.ElevatorListFragment"
+        android:label="Zobrazit seznam výtahů" />
+</navigation>
