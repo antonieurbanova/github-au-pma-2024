@@ -29,6 +29,7 @@ class HomeFragment : Fragment() {
 
         binding.btnAddInspection.setOnClickListener {
             findNavController().navigate(R.id.action_to_addInspection)
+
         }
 
         binding.btnCalendar.setOnClickListener {

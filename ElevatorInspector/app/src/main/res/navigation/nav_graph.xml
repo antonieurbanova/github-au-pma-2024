@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.elevatorinspector.HomeFragment"
-        android:label="Home">
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_to_addElevator"
             app:destination="@id/addElevatorFragment" />
@@ -24,20 +26,25 @@
     <fragment
         android:id="@+id/addElevatorFragment"
         android:name="com.example.elevatorinspector.AddElevatorFragment"
-        android:label="Přidat nový výtah" />
+        android:label="Přidat nový výtah"
+        tools:layout="@layout/fragment_add_elevator"/>
 
     <fragment
         android:id="@+id/addInspectionFragment"
         android:name="com.example.elevatorinspector.AddInspectionFragment"
-        android:label="Evidovat proběhlou OZ nebo OP" />
+        android:label="Evidovat proběhlou OZ nebo OP"
+        tools:layout="@layout/fragment_add_inspection"
+      />
 
     <fragment
         android:id="@+id/calendarFragment"
         android:name="com.example.elevatorinspector.CalendarFragment"
-        android:label="Zobrazit kalendář" />
+        android:label="Zobrazit kalendář"
+        tools:layout="@layout/fragment_calendar"/>
 
     <fragment
         android:id="@+id/elevatorListFragment"
         android:name="com.example.elevatorinspector.ElevatorListFragment"
-        android:label="Zobrazit seznam výtahů" />
+        android:label="Zobrazit seznam výtahů"
+        tools:layout="@layout/fragment_elevator_list"/>
 </navigation>

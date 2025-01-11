@@ -21,10 +21,12 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        // Konfigurace AppBar
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        // Nastavení MaterialToolBar
         val toolbar: MaterialToolbar = findViewById(R.id.topAppBar)
         setSupportActionBar(toolbar)
+
+        // Spojení toolbaru s NavControllerem
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 

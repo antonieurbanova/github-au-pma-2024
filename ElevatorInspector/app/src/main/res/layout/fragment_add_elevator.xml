@@ -1,15 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="16dp">
 
-    <Button
-        android:id="@+id/btnAddElevator"
+    <!-- Název výtahu -->
+    <TextView
+        android:id="@+id/twNazev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Placeholder" />
+        android:text="Název výtahu"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</LinearLayout>
+    <EditText
+        android:id="@+id/etNazev"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Zadejte své označení výtahu"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/twNazev"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0" />
+
+    <!-- Adresa - Ulice -->
+    <TextView
+        android:id="@+id/twUlice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ulice"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/etNazev"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etUlice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Zadejte ulici"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/twUlice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Číslo popisné -->
+    <TextView
+        android:id="@+id/twCisloPopisne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Číslo popisné"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/etUlice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etCisloPopisne"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Zadejte číslo popisné"
+        android:digits="0123456789/"
+        app:layout_constraintTop_toBottomOf="@id/twCisloPopisne"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Město -->
+    <TextView
+        android:id="@+id/twMesto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Město"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/etCisloPopisne"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etMesto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Zadejte město"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/twMesto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Typ výtahu -->
+    <TextView
+        android:id="@+id/twDruh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Druh výtahu"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/etMesto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <Spinner
+        android:id="@+id/spinnerDruh"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/twDruh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:entries="@array/druh_vytahu"/>
+
+    <!-- Nosnost -->
+    <TextView
+        android:id="@+id/twNosnost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nosnost"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/spinnerDruh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etNosnost"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Zadejte nosnost"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/twNosnost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Počet pater -->
+    <TextView
+        android:id="@+id/twPatra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Počet pater"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/etNosnost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etPatra"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Zadejte počet pater"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@id/twPatra"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Tlačítko pro uložení -->
+    <Button
+        android:id="@+id/btnSaveElevator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Přidat výtah"
+        app:layout_constraintTop_toBottomOf="@id/etPatra"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

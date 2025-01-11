@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ElevatorInspector</string>
+
+        <string-array name="druh_vytahu">
+            <item>Osobní</item>
+            <item>Jídelní</item>
+        </string-array>
+
 </resources>
