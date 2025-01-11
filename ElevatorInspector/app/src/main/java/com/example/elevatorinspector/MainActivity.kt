@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.firebase.FirebaseApp
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
@@ -34,9 +35,7 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         println("Firebase initialized successfully")
 
-
     }
-
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
