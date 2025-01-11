@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.firebase.FirebaseApp
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,7 +29,14 @@ class MainActivity : AppCompatActivity() {
         // Spojení toolbaru s NavControllerem
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // Inicializace Firebase
+        FirebaseApp.initializeApp(this)
+        println("Firebase initialized successfully")
+
+
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
