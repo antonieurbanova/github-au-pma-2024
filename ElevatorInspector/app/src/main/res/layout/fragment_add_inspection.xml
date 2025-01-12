@@ -16,7 +16,8 @@
         android:textSize="16sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <Spinner
         android:id="@+id/spinnerVytah"
@@ -25,6 +26,7 @@
         app:layout_constraintTop_toBottomOf="@id/twVyberVytahu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
         />
 
     <!-- Spinner pro typ prohlídky (OZ/OP) -->
@@ -38,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@id/spinnerVytah"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="10dp" />
 
     <Spinner
         android:id="@+id/spinnerProhlidka"
@@ -48,6 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:entries="@array/druh_prohlidky"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
         />
 
     <!-- DatePicker pro datum prohlídky -->
@@ -61,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@id/spinnerProhlidka"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="10dp" />
 
     <EditText
         android:id="@+id/etDatumProvedeni"
