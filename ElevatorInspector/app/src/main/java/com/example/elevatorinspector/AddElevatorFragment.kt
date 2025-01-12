@@ -92,6 +92,7 @@ class AddElevatorFragment : Fragment() {
         val timestamp = Timestamp(date)
 
 
+
         // Vytvoření hodnot pro plannedOZ a plannedOP podle typu výtahu
 
         // Funkce pro přidání let a měsíců
@@ -101,13 +102,14 @@ class AddElevatorFragment : Fragment() {
             return Timestamp(calendar.time)
         }
 
+
         fun Timestamp.addMonths(months: Int): Timestamp {
             val calendar = Calendar.getInstance().apply { time = this@addMonths.toDate() }
             calendar.add(Calendar.MONTH, months)
             return Timestamp(calendar.time)
         }
 
-// Inicializace plannedOP a plannedOZ podle typu výtahu
+        // Inicializace plannedOP a plannedOZ podle typu výtahu
         val (plannedOP, plannedOZ) = when (druh) {
             "Osobní" -> timestamp.addMonths(3) to timestamp.addYears(1)
             "Jídelní" -> timestamp.addMonths(6) to timestamp.addYears(3)

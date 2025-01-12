@@ -2,6 +2,7 @@ package com.example.elevatorinspector
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -87,6 +88,9 @@ class AddInspectionFragment : Fragment() {
             }
     }
 
+
+
+
     private fun setupElevatorSpinner() {
         // Vytvoření ArrayAdapteru pro Spinner
         val adapter = ArrayAdapter(
@@ -106,6 +110,7 @@ class AddInspectionFragment : Fragment() {
         val prohlidkaTyp = binding.spinnerProhlidka.selectedItem.toString()
         val datumProvedeni = binding.etDatumProvedeni.text.toString()
         val jmenoInspektora = binding.etJmenoInspektora.text.toString()
+
 
         // Kontrola, zda jsou všechna pole vyplněná
         if (vytah.isEmpty() || prohlidkaTyp.isEmpty() || datumProvedeni.isEmpty() || jmenoInspektora.isEmpty()) {
@@ -132,34 +137,40 @@ class AddInspectionFragment : Fragment() {
                 val plannedOZ = elevator.getTimestamp("plannedOZ") ?: Timestamp.now()
                 val plannedOP = elevator.getTimestamp("plannedOP") ?: Timestamp.now()
 
+                //vytvoření instance kalendáře pro manipulaci s daty
                 val calendar = Calendar.getInstance()
                 calendar.time = date
 
                 // Aktualizace dat podle typu prohlídky
                 val newPlannedOZ: Timestamp
                 val newPlannedOP: Timestamp
-                val vcas: Boolean
+                var vcas: Boolean = true
+
+                val vytahTyp = elevator.get("druh")
 
                 if (prohlidkaTyp == "OZ") {
-                    if (vytah == "Osobní") {
+                    calendar.time = timestamp.toDate() // Nastavíme kalendář na datum provedení OZ
+
+                    if (vytahTyp == "Osobní") {
                         calendar.add(Calendar.YEAR, 1)
-                        newPlannedOZ = Timestamp(calendar.time)
                     } else { // Jídelní výtah
                         calendar.add(Calendar.YEAR, 3)
-                        newPlannedOZ = Timestamp(calendar.time)
                     }
+                    newPlannedOZ = Timestamp(calendar.time)
                     newPlannedOP = plannedOP // OP zůstává nezměněné
-                    vcas = timestamp.toDate().compareTo(plannedOP.toDate()) <= 0
+
                 } else { // OP
-                    if (vytah == "Osobní") {
+                    vcas = timestamp.toDate().compareTo(plannedOP.toDate()) <= 0
+
+                    calendar.time = plannedOP.toDate() // Nastavíme kalendář na původní plannedOP
+
+                    if (vytahTyp == "Osobní") {
                         calendar.add(Calendar.MONTH, 3)
-                        newPlannedOP = Timestamp(calendar.time)
                     } else { // Jídelní výtah
                         calendar.add(Calendar.MONTH, 6)
-                        newPlannedOP = Timestamp(calendar.time)
                     }
+                    newPlannedOP = Timestamp(calendar.time)
                     newPlannedOZ = plannedOZ // OZ zůstává nezměněné
-                    vcas = timestamp.toDate().compareTo(newPlannedOP.toDate()) <= 0
                 }
 
                 // Vytvoření objektu pro prohlídku
@@ -170,7 +181,6 @@ class AddInspectionFragment : Fragment() {
                     "jmenoInspektora" to jmenoInspektora,
                     "vcas" to vcas
                 )
-
 
                 // Uložení prohlídky do Firestore
                 prohlidkyRef
