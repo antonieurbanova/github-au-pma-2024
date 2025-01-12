@@ -93,60 +93,26 @@ class AddElevatorFragment : Fragment() {
 
 
         // Vytvoření hodnot pro plannedOZ a plannedOP podle typu výtahu
-        val calendar = Calendar.getInstance()
-        calendar.time = date
 
-        // Podmínky pro osobní a jídelní výtah
-
-        // Funkce pro přidání let
-        fun addYearsToTimestamp(baseTimestamp: Timestamp, years: Int): Timestamp {
-            val calendar = Calendar.getInstance()
-            calendar.time = baseTimestamp.toDate()
+        // Funkce pro přidání let a měsíců
+        fun Timestamp.addYears(years: Int): Timestamp {
+            val calendar = Calendar.getInstance().apply { time = this@addYears.toDate() }
             calendar.add(Calendar.YEAR, years)
-            val result = Timestamp(calendar.time)
-            Log.d("TimestampDebug", "addYearsToTimestamp: Input=$baseTimestamp, Years=$years, Result=$result")
-            return result
+            return Timestamp(calendar.time)
         }
 
-        // Funkce pro přidání měsíců
-        fun addMonthsToTimestamp(baseTimestamp: Timestamp, months: Int): Timestamp {
-            val calendar = Calendar.getInstance()
-            calendar.time = baseTimestamp.toDate()
+        fun Timestamp.addMonths(months: Int): Timestamp {
+            val calendar = Calendar.getInstance().apply { time = this@addMonths.toDate() }
             calendar.add(Calendar.MONTH, months)
-            val result = Timestamp(calendar.time)
-            Log.d("TimestampDebug", "addMonthsToTimestamp: Input=$baseTimestamp, Months=$months, Result=$result")
-            return result
+            return Timestamp(calendar.time)
         }
 
-        var plannedOP = timestamp
-        var plannedOZ = timestamp
-
-        if (druh == "Osobní") {
-            // Osobní výtah
-            val newPlannedOP = addMonthsToTimestamp(timestamp, 3) // OP za 3 měsíce
-            plannedOP = newPlannedOP
-            Log.d("Debug", "111After setting PlannedOP=$plannedOP, PlannedOZ=$plannedOZ")
-            val newPlannedOZ = addYearsToTimestamp(timestamp, 1) // OZ za 1 rok
-            plannedOZ = newPlannedOZ
-            Log.d("Debug", "2222After setting PlannedOP=$plannedOP, PlannedOZ=$plannedOZ")
-        } else if (druh == "Jídelní") {
-            // Jídelní výtah
-            val newPlannedOP = addMonthsToTimestamp(timestamp, 6) // OP za 6 měsíců
-            plannedOP = newPlannedOP
-            Log.d("Debug", "333After setting PlannedOP=$plannedOP, PlannedOZ=$plannedOZ")
-            val newPlannedOZ = addYearsToTimestamp(timestamp, 3) // OZ za 3 roky
-            plannedOZ = newPlannedOZ
-            Log.d("Debug", "444After setting PlannedOP=$plannedOP, PlannedOZ=$plannedOZ")
-        } else {
-            // Neznámý typ výtahu
-            plannedOP = timestamp
-            Log.d("Debug", "5555After setting PlannedOP=$plannedOP, PlannedOZ=$plannedOZ")
-            plannedOZ = timestamp
-            Log.d("Debug", "6666After setting PlannedOP=$plannedOP, PlannedOZ=$plannedOZ")
+// Inicializace plannedOP a plannedOZ podle typu výtahu
+        val (plannedOP, plannedOZ) = when (druh) {
+            "Osobní" -> timestamp.addMonths(3) to timestamp.addYears(1)
+            "Jídelní" -> timestamp.addMonths(6) to timestamp.addYears(3)
+            else -> timestamp to timestamp // Neznámý typ výtahu
         }
-
-        Log.d("ElevatorSetup", "Druh=$druh, PlannedOP=$plannedOP, PlannedOZ=$plannedOZ")
-
 
         // Vytvoření objektu pro výtah
         val vytah = hashMapOf(
