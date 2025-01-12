@@ -27,7 +27,7 @@ class AddElevatorFragment : Fragment() {
 
     //kalendar
     private fun setupDatePicker() {
-        val etPrvniOZOP = binding.etprvniOZOP
+        val etPrvniOZOP = binding.etPrvniOZOP
 
         etPrvniOZOP.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -77,7 +77,7 @@ class AddElevatorFragment : Fragment() {
         val druh = binding.spinnerDruh.selectedItem.toString()
         val nosnost = binding.etNosnost.text.toString().toIntOrNull()
         val patra = binding.etPatra.text.toString().toIntOrNull()
-        val prvniOZOP = binding.etprvniOZOP.text.toString()
+        val prvniOZOP = binding.etPrvniOZOP.text.toString()
 
         // Zkontrolování, zda jsou všechny hodnoty vyplněné
         if (nazev.isEmpty() || ulice.isEmpty() || cisloPopisne.isEmpty() || mesto.isEmpty() ||

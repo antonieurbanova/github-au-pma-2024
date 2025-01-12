@@ -6,4 +6,9 @@
             <item>Jídelní</item>
         </string-array>
 
+    <string-array name="druh_prohlidky">
+        <item>OZ</item>
+        <item>OP</item>
+    </string-array>
+
 </resources>

@@ -1,21 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="16dp">
 
-    <Button
-        android:id="@+id/btnAddElevator"
+    <!-- Spinner pro výběr výtahu -->
+    <TextView
+        android:id="@+id/twVyberVytahu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Placeholder" />
+        android:text="Výtah, ke kterému se záznam vztahuje"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Spinner
         android:id="@+id/spinnerVytah"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/twVyberVytahu"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         />
 
-</LinearLayout>
+    <!-- Spinner pro typ prohlídky (OZ/OP) -->
+
+    <TextView
+        android:id="@+id/twProhlidka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Odborná zkouška/ Odborná prohlídka"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/spinnerVytah"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <Spinner
+        android:id="@+id/spinnerProhlidka"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/twProhlidka"
+        app:layout_constraintStart_toStartOf="parent"
+        android:entries="@array/druh_prohlidky"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <!-- DatePicker pro datum prohlídky -->
+
+    <TextView
+        android:id="@+id/twDatumProvedeni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Datum provedení"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/spinnerProhlidka"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etDatumProvedeni"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Datum provedení"
+        android:focusable="false"
+        app:layout_constraintTop_toBottomOf="@id/twDatumProvedeni"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- EditText pro jméno inspektora -->
+
+
+    <TextView
+        android:id="@+id/twJmenoInspektora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jméno inspektora"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/etDatumProvedeni"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+
+    <EditText
+        android:id="@+id/etJmenoInspektora"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Zadejte jméno inspektora"
+        app:layout_constraintTop_toBottomOf="@id/twJmenoInspektora"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <!-- Tlačítko pro uložení -->
+    <Button
+        android:id="@+id/btnSaveInspection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Evidovat OZ/OP"
+        app:layout_constraintTop_toBottomOf="@id/etJmenoInspektora"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
