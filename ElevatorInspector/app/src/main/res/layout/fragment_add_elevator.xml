@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Číslo popisné -->
+    <!-- Adresa - Číslo popisné -->
     <TextView
         android:id="@+id/twCisloPopisne"
         android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Město -->
+    <!-- Adresa - Město -->
     <TextView
         android:id="@+id/twMesto"
         android:layout_width="wrap_content"
@@ -160,13 +160,37 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Prvni prohlídka a zkouška-->
+
+    <TextView
+        android:id="@+id/twPrvniOZOP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Datum uvedení do provozu (příp. první OZ/OP)"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/etPatra"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etprvniOZOP"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Zadejte datum uvedení do provozu"
+        android:focusable="false"
+        android:inputType="none"
+        app:layout_constraintTop_toBottomOf="@id/twPrvniOZOP"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <!-- Tlačítko pro uložení -->
     <Button
         android:id="@+id/btnSaveElevator"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Přidat výtah"
-        app:layout_constraintTop_toBottomOf="@id/etPatra"
+        app:layout_constraintTop_toBottomOf="@id/etprvniOZOP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />

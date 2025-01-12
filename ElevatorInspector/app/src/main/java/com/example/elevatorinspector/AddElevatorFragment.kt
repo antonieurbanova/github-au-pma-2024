@@ -1,5 +1,6 @@
 package com.example.elevatorinspector
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +10,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.elevatorinspector.databinding.FragmentAddElevatorBinding
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class AddElevatorFragment : Fragment() {
 
@@ -18,6 +23,32 @@ class AddElevatorFragment : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
     val vytahyRef = db.collection("vytahy")
+
+
+    //kalendar
+    private fun setupDatePicker() {
+        val etPrvniOZOP = binding.etprvniOZOP
+
+        etPrvniOZOP.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            // Zobrazení DatePickerDialog
+            DatePickerDialog(
+                requireContext(),
+                { _, selectedYear, selectedMonth, selectedDay ->
+                    // Nastavení vybraného data do EditText
+                    val formattedDate = String.format("%04d-%02d-%02d", selectedYear, selectedMonth + 1, selectedDay)
+                    etPrvniOZOP.setText(formattedDate)
+                },
+                year,
+                month,
+                day
+            ).show()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +62,9 @@ class AddElevatorFragment : Fragment() {
             addElevatorToFirestore()
         }
 
+        // kalendar
+        setupDatePicker()
+
         return root
     }
 
@@ -43,13 +77,20 @@ class AddElevatorFragment : Fragment() {
         val druh = binding.spinnerDruh.selectedItem.toString()
         val nosnost = binding.etNosnost.text.toString().toIntOrNull()
         val patra = binding.etPatra.text.toString().toIntOrNull()
+        val prvniOZOP = binding.etprvniOZOP.text.toString()
 
         // Zkontrolování, zda jsou všechny hodnoty vyplněné
         if (nazev.isEmpty() || ulice.isEmpty() || cisloPopisne.isEmpty() || mesto.isEmpty() ||
-            nosnost == null || patra == null) {
+            nosnost == null || patra == null || prvniOZOP.isEmpty()) {
             Toast.makeText(requireContext(), "Vyplňte prosím všechny údaje.", Toast.LENGTH_SHORT).show()
             return
         }
+
+        //Převedení data první prohlidky na timestamp
+        val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val date = simpleDateFormat.parse(prvniOZOP)
+        val timestamp = Timestamp(date)
+
 
         // Vytvoření objektu pro výtah
         val vytah = hashMapOf(
@@ -59,7 +100,8 @@ class AddElevatorFragment : Fragment() {
             "mesto" to mesto,
             "druh" to druh,
             "vaha" to nosnost,
-            "patra" to patra
+            "patra" to patra,
+            "prvniOZOP" to timestamp
         )
 
         //Log.d("AddElevatorFragment", "Elevator data: $vytah")
