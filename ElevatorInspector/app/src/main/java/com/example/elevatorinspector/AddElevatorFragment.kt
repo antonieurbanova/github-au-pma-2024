@@ -92,6 +92,35 @@ class AddElevatorFragment : Fragment() {
         val timestamp = Timestamp(date)
 
 
+        // Vytvoření hodnot pro plannedOZ a plannedOP podle typu výtahu
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+
+        // Podmínky pro osobní a jídelní výtah
+        val plannedOZ: Timestamp
+        val plannedOP: Timestamp
+
+        if (druh == "Osobní") {
+            // Osobní výtah
+            calendar.add(Calendar.MONTH, 3) // OP za 3 měsíce
+            plannedOP = Timestamp(calendar.time)
+
+            calendar.add(Calendar.YEAR, 1) // OZ za 1 rok
+            plannedOZ = Timestamp(calendar.time)
+        } else if (druh == "Jídelní") {
+            // Jídelní výtah
+            calendar.add(Calendar.MONTH, 6) // OP za 6 měsíců
+            plannedOP = Timestamp(calendar.time)
+
+            calendar.add(Calendar.YEAR, 3) // OZ za 3 roky
+            plannedOZ = Timestamp(calendar.time)
+        } else {
+            // Pokud je zadán neznámý typ výtahu, použijeme defaultní hodnoty - musí zde aby byly hodnoty inicializovány
+            plannedOP = Timestamp(calendar.time)
+            plannedOZ = Timestamp(calendar.time)
+        }
+
+
         // Vytvoření objektu pro výtah
         val vytah = hashMapOf(
             "nazev" to nazev,
@@ -101,7 +130,9 @@ class AddElevatorFragment : Fragment() {
             "druh" to druh,
             "vaha" to nosnost,
             "patra" to patra,
-            "prvniOZOP" to timestamp
+            "prvniOZOP" to timestamp,
+            "plannedOZ" to plannedOZ,
+            "plannedOP" to plannedOP
         )
 
         //Log.d("AddElevatorFragment", "Elevator data: $vytah")

@@ -168,7 +168,7 @@
         android:id="@+id/twPrvniOZOP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Datum uvedení do provozu (příp. první OZ/OP)"
+        android:text="Datum uvedení do provozu (první OZ+OP)"
         android:textSize="16sp"
         app:layout_constraintTop_toBottomOf="@id/etPatra"
         app:layout_constraintStart_toStartOf="parent"
