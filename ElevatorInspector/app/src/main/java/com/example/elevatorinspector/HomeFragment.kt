@@ -21,6 +21,11 @@ class HomeFragment : Fragment() {
         // Inflate layout
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+    // Přístup k toolbaru
+        val toolbar = requireActivity().findViewById<com.google.android.material.appbar.MaterialToolbar>(R.id.topAppBar)
+
+        // Nastavení navigační ikony
+        toolbar.setNavigationIcon(R.drawable.ic_menu)
 
         // Nastavení kliknutí na tlačítka a navigace
         binding.btnAddElevator.setOnClickListener {

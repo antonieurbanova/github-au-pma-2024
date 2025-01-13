@@ -7,20 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <!-- Obsah pro Home Fragment -->
-
-    <!-- Tlačítko pro přidání výtahu -->
-
-    <!-- Tlačítko pro evidenci prohlídky
-
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/topAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_menu"
-        app:title="Elevator Inspector" />-->
-
     <TextView
         android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
@@ -32,49 +18,56 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.036" />
+        app:layout_constraintVertical_bias="0.036"
+        />
 
     <Button
         android:id="@+id/btnAddElevator"
-        android:layout_width="wrap_content"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="25dp"
+        android:textSize="20sp"
         android:text="Přidat do evidence nový výtah"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText"
+        android:backgroundTint="@color/background"/>
 
     <Button
         android:id="@+id/btnAddInspection"
-        android:layout_width="wrap_content"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Evidovat proběhlou OZ nebo OP"
+        android:text="Evidovat proběhlou OZ/OP"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnAddElevator" />
+        app:layout_constraintTop_toBottomOf="@id/btnAddElevator"
+        android:backgroundTint="@color/background"/>
 
-    <!-- Tlačítko pro kalendář -->
     <Button
         android:id="@+id/btnCalendar"
-        android:layout_width="wrap_content"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Zobrazit kalendář"
         app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/background"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnAddInspection" />
 
-    <!-- Tlačítko pro seznam výtahů -->
     <Button
         android:id="@+id/btnElevatorList"
-        android:layout_width="wrap_content"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Zobrazit seznam výtahů"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/background"
         app:layout_constraintTop_toBottomOf="@id/btnCalendar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

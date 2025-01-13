@@ -73,8 +73,8 @@ class CalendarFragment : Fragment() {
             plannedOP?.let { plannedDates.add(dateToCalendarDay(it)) }
             plannedOZ?.let { plannedDates.add(dateToCalendarDay(it)) }
         }
-        val plannedColor = ContextCompat.getColor(requireContext(), R.color.blue)
-        calendarView.addDecorator(EventDecorator(color, plannedDates))
+        val plannedColor = ContextCompat.getColor(requireContext(), R.color.yellow)
+        calendarView.addDecorator(EventDecorator(plannedColor, plannedDates))
     }
 
     private fun highlightInspectionDates(
@@ -202,17 +202,7 @@ class CalendarFragment : Fragment() {
                                                 doc.getString(
                                                     "prohlidkaTyp"
                                                 )
-                                            } pro ${
-                                                doc.getString("druh")?.lowercase()
-                                            } výtah ${doc.getString("nazev")} na adrese ${
-                                                doc.getString(
-                                                    "ulice"
-                                                )
-                                            } ${doc.getString("cisloPopisne")}, ${
-                                                doc.getString(
-                                                    "mesto"
-                                                )
-                                            }. ${
+                                            } pro výtah s názvem ${doc.getString("vytah")}. ${
                                                 doc.getString(
                                                     "prohlidkaTyp"
                                                 )

@@ -12,11 +12,13 @@
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
         app:title="Elevator Inspector"
-        app:navigationIcon="@drawable/ic_menu"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="?attr/actionBarSize"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/background"
+        app:navigationIcon="@drawable/ic_menu"
+        android:theme="@style/Base.Theme.ElevatorInspector"/>
 
     <!-- "
     android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar.Primary" -->
@@ -34,6 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topAppBar"
-        app:navGraph="@navigation/nav_graph" />
+        app:navGraph="@navigation/nav_graph"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

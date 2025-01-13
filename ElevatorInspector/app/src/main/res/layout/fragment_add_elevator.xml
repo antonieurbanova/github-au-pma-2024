@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"> <!-- Zajistí, že obsah zaujme celý prostor -->
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -24,10 +32,11 @@
         android:layout_height="wrap_content"
         android:hint="Zadejte své označení výtahu"
         android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/twNazev"
-        app:layout_constraintStart_toStartOf="parent"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0" />
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/twNazev" />
 
     <!-- Adresa - Ulice -->
     <TextView
@@ -47,9 +56,10 @@
         android:layout_height="wrap_content"
         android:hint="Zadejte ulici"
         android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/twUlice"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/twUlice" />
 
     <!-- Adresa - Číslo popisné -->
     <TextView
@@ -67,11 +77,12 @@
         android:id="@+id/etCisloPopisne"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Zadejte číslo popisné"
         android:digits="0123456789/"
-        app:layout_constraintTop_toBottomOf="@id/twCisloPopisne"
+        android:hint="Zadejte číslo popisné"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/twCisloPopisne" />
 
     <!-- Adresa - Město -->
     <TextView
@@ -91,9 +102,10 @@
         android:layout_height="wrap_content"
         android:hint="Zadejte město"
         android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/twMesto"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/twMesto" />
 
     <!-- Typ výtahu -->
     <TextView
@@ -112,11 +124,13 @@
         android:id="@+id/spinnerDruh"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/twDruh"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/spinner_border"
         android:entries="@array/druh_vytahu"
-        android:layout_marginTop="8dp"/>
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/twDruh" />
 
     <!-- Nosnost -->
     <TextView
@@ -136,9 +150,10 @@
         android:layout_height="wrap_content"
         android:hint="Zadejte nosnost"
         android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@id/twNosnost"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/twNosnost" />
 
     <!-- Počet pater -->
     <TextView
@@ -158,9 +173,10 @@
         android:layout_height="wrap_content"
         android:hint="Zadejte počet pater"
         android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@id/twPatra"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/twPatra" />
 
     <!-- Prvni prohlídka a zkouška-->
 
@@ -179,22 +195,27 @@
         android:id="@+id/etPrvniOZOP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Zadejte datum uvedení do provozu"
         android:focusable="false"
+        android:hint="Zadejte datum uvedení do provozu"
         android:inputType="none"
-        app:layout_constraintTop_toBottomOf="@id/twPrvniOZOP"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/twPrvniOZOP" />
 
     <!-- Tlačítko pro uložení -->
     <Button
         android:id="@+id/btnSaveElevator"
-        android:layout_width="0dp"
+        android:layout_width="370dp"
+        android:backgroundTint="@color/background"
+        android:textSize="20sp"
         android:layout_height="wrap_content"
         android:text="Přidat výtah"
         app:layout_constraintTop_toBottomOf="@id/etPrvniOZOP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

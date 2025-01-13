@@ -6,18 +6,30 @@
     android:gravity="center"
     android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:backgroundTint="@color/background"
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Kalendář -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round">
+
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        app:mcv_selectionColor="@color/teal_200"
+        app:mcv_selectionColor="@color/background"
+        app:mcv_weekDayTextAppearance="@style/CalendarCustomStyle"
+        app:mcv_headerTextAppearance="@style/CalendarCustomStyle"
+        app:mcv_dateTextAppearance="@style/CalendarCustomStyle"
+        app:mcv_arrowColor="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddEvent" />
+        app:layout_constraintBottom_toTopOf="@+id/btnAddEvent"
+        />
+    </FrameLayout>
 
 </LinearLayout>

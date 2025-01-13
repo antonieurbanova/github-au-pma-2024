@@ -23,11 +23,13 @@
         android:id="@+id/spinnerVytah"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/twVyberVytahu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
-        />
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/twVyberVytahu"
+        android:background="@drawable/spinner_border"
+    />
 
     <!-- Spinner pro typ prohlídky (OZ/OP) -->
 
@@ -46,11 +48,13 @@
         android:id="@+id/spinnerProhlidka"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/twProhlidka"
-        app:layout_constraintStart_toStartOf="parent"
-        android:entries="@array/druh_prohlidky"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
+        android:entries="@array/druh_prohlidky"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/twProhlidka"
+        android:background="@drawable/spinner_border"
         />
 
     <!-- DatePicker pro datum prohlídky -->
@@ -70,11 +74,12 @@
         android:id="@+id/etDatumProvedeni"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Datum provedení"
         android:focusable="false"
-        app:layout_constraintTop_toBottomOf="@id/twDatumProvedeni"
+        android:hint="Vyberte datum provedení"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/twDatumProvedeni" />
 
     <!-- EditText pro jméno inspektora -->
 
@@ -96,15 +101,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Zadejte jméno inspektora"
-        app:layout_constraintTop_toBottomOf="@id/twJmenoInspektora"
-        app:layout_constraintStart_toStartOf="parent"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/twJmenoInspektora" />
 
     <!-- Tlačítko pro uložení -->
     <Button
         android:id="@+id/btnSaveInspection"
-        android:layout_width="0dp"
+        android:layout_width="370dp"
+        android:backgroundTint="@color/background"
+        android:textSize="20sp"
         android:layout_height="wrap_content"
         android:text="Evidovat OZ/OP"
         app:layout_constraintTop_toBottomOf="@id/etJmenoInspektora"

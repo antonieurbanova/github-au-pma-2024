@@ -7,8 +7,12 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.elevatorinspector.HomeFragment"
-        android:label="Home"
-        tools:layout="@layout/fragment_home" >
+        android:label="Elevator Inspector"
+        android:background="@color/background"
+        app:navigationIcon="@drawable/ic_menu"
+        tools:layout="@layout/fragment_home"
+
+        >
         <action
             android:id="@+id/action_to_addElevator"
             app:destination="@id/addElevatorFragment" />

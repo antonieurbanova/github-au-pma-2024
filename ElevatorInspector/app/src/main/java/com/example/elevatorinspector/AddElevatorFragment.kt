@@ -86,12 +86,11 @@ class AddElevatorFragment : Fragment() {
             return
         }
 
+
         //Převedení data první prohlidky na timestamp
         val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         val date = simpleDateFormat.parse(prvniOZOP)
         val timestamp = Timestamp(date)
-
-
 
         // Vytvoření hodnot pro plannedOZ a plannedOP podle typu výtahu
 
@@ -116,34 +115,61 @@ class AddElevatorFragment : Fragment() {
             else -> timestamp to timestamp // Neznámý typ výtahu
         }
 
-        // Vytvoření objektu pro výtah
-        val vytah = hashMapOf(
-            "nazev" to nazev,
-            "ulice" to ulice,
-            "cisloPopisne" to cisloPopisne,
-            "mesto" to mesto,
-            "druh" to druh,
-            "vaha" to nosnost,
-            "patra" to patra,
-            "prvniOZOP" to timestamp,
-            "plannedOZ" to plannedOZ,
-            "plannedOP" to plannedOP
-        )
+        // Kontrola, zda název výtahu je unikátní
+        db.collection("vytahy")
+            .whereEqualTo("nazev", nazev)
+            .get()
+            .addOnSuccessListener { snapshot ->
+                if (!snapshot.isEmpty) {
+                    // Název už existuje
+                    Toast.makeText(
+                        requireContext(),
+                        "Výtah s tímto názvem již existuje. Vyberte prosím jiný název.",
+                        Toast.LENGTH_LONG
+                    ).show()
+                } else {
+                    // Název je unikátní, přidáme nový záznam
+                    // Vytvoření objektu pro výtah
+                    val vytah = hashMapOf(
+                        "nazev" to nazev,
+                        "ulice" to ulice,
+                        "cisloPopisne" to cisloPopisne,
+                        "mesto" to mesto,
+                        "druh" to druh,
+                        "vaha" to nosnost,
+                        "patra" to patra,
+                        "prvniOZOP" to timestamp,
+                        "plannedOZ" to plannedOZ,
+                        "plannedOP" to plannedOP
+                    )
 
-        //Log.d("AddElevatorFragment", "Elevator data: $vytah")
+                    //Log.d("AddElevatorFragment", "Elevator data: $vytah")
 
-        // Uložení výtahu do Firestore
-       vytahyRef
-            .add(vytah)
-            .addOnSuccessListener { documentReference ->
-                Toast.makeText(requireContext(), "Výtah byl úspěšně přidán!", Toast.LENGTH_SHORT).show()
-                // Přesměrování na jiný fragment po úspěšném přidání
-                findNavController().navigate(R.id.homeFragment)
+                    // Uložení výtahu do Firestore
+                    vytahyRef
+                        .add(vytah)
+                        .addOnSuccessListener { documentReference ->
+                            Toast.makeText(
+                                requireContext(),
+                                "Výtah byl úspěšně přidán!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            // Přesměrování na jiný fragment po úspěšném přidání
+                            findNavController().navigate(R.id.homeFragment)
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(
+                                requireContext(),
+                                "Chyba při přidávání výtahu: ${e.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            //Log.e("AddElevatorFragment", "Error adding elevator: ${e.message}")
+                            //findNavController().navigate(R.id.homeFragment)
+                        }
+                }
             }
             .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Chyba při přidávání výtahu: ${e.message}", Toast.LENGTH_SHORT).show()
-                //Log.e("AddElevatorFragment", "Error adding elevator: ${e.message}")
-                //findNavController().navigate(R.id.homeFragment)
+                Toast.makeText(requireContext(), "Chyba při ověřování názvu: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
