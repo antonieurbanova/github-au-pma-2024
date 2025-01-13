@@ -41,9 +41,6 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_to_calendar)
         }
 
-        binding.btnElevatorList.setOnClickListener {
-            findNavController().navigate(R.id.action_to_elevatorList)
-        }
 
         return root
     }

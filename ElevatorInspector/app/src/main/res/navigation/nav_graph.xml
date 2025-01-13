@@ -22,9 +22,7 @@
         <action
             android:id="@+id/action_to_calendar"
             app:destination="@id/calendarFragment" />
-        <action
-            android:id="@+id/action_to_elevatorList"
-            app:destination="@id/elevatorListFragment" />
+
     </fragment>
 
     <fragment
@@ -46,9 +44,4 @@
         android:label="Zobrazit kalendář"
         tools:layout="@layout/fragment_calendar"/>
 
-    <fragment
-        android:id="@+id/elevatorListFragment"
-        android:name="com.example.elevatorinspector.ElevatorListFragment"
-        android:label="Zobrazit seznam výtahů"
-        tools:layout="@layout/fragment_elevator_list"/>
 </navigation>

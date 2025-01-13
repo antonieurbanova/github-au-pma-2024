@@ -58,16 +58,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnAddInspection" />
 
-    <Button
-        android:id="@+id/btnElevatorList"
-        android:layout_width="330dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Zobrazit seznam výtahů"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:backgroundTint="@color/background"
-        app:layout_constraintTop_toBottomOf="@id/btnCalendar" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
