@@ -67,6 +67,5 @@ dependencies {
 
         // Add the dependencies for any other desired Firebase products
         // https://firebase.google.com/docs/android/setup#available-libraries
-
-
+    implementation("com.prolificinteractive:material-calendarview:1.4.3")
 }
