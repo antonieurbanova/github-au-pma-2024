@@ -2,7 +2,6 @@ package com.example.elevatorinspector
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -88,9 +87,6 @@ class AddInspectionFragment : Fragment() {
             }
     }
 
-
-
-
     private fun setupElevatorSpinner() {
         // Vytvoření ArrayAdapteru pro Spinner
         val adapter = ArrayAdapter(
@@ -136,6 +132,8 @@ class AddInspectionFragment : Fragment() {
                 val elevator = documents.first()
                 val plannedOZ = elevator.getTimestamp("plannedOZ") ?: Timestamp.now()
                 val plannedOP = elevator.getTimestamp("plannedOP") ?: Timestamp.now()
+                val vytahTyp = elevator.get("druh")
+
 
                 //vytvoření instance kalendáře pro manipulaci s daty
                 val calendar = Calendar.getInstance()
@@ -145,8 +143,6 @@ class AddInspectionFragment : Fragment() {
                 val newPlannedOZ: Timestamp
                 val newPlannedOP: Timestamp
                 var vcas: Boolean = true
-
-                val vytahTyp = elevator.get("druh")
 
                 if (prohlidkaTyp == "OZ") {
                     calendar.time = timestamp.toDate() // Nastavíme kalendář na datum provedení OZ

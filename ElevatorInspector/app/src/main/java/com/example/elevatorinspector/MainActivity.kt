@@ -8,7 +8,6 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.firebase.FirebaseApp
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-
         // Listener pro změnu navigační ikony
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id != R.id.homeFragment) {
@@ -44,13 +42,13 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         // Inicializace Firebase
-        FirebaseApp.initializeApp(this)
-        println("Firebase initialized successfully")
+       // FirebaseApp.initializeApp(this)
+       // println("Firebase initialized successfully")
 
     }
 
+    //Akce tlačítka zpět
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }

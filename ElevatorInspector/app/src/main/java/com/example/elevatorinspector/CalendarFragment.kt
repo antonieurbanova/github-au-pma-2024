@@ -2,7 +2,6 @@ package com.example.elevatorinspector
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +37,7 @@ class CalendarFragment : Fragment() {
         // Načti data z Firebase a aplikuj dekorátory
         fetchFirebaseData(calendarView)
 
-        // Nastavit posluchač pro kliknutí na den
+        // Nastaví posluchač pro kliknutí na den
         calendarView.setOnDateChangedListener { _, date, _ ->
             onDateSelected(date)
         }
@@ -105,12 +104,9 @@ class CalendarFragment : Fragment() {
 
         calendarView.addDecorator(EventDecorator(vcasColor, vcasDates))
         calendarView.addDecorator(EventDecorator(pozdeColor, pozdeDates))
-
     }
 
-
     // Pomocná funkce pro převod Date na CalendarDay
-
     private fun dateToCalendarDay(date: Date): CalendarDay {
         val calendar = Calendar.getInstance()
         calendar.time = date
@@ -129,7 +125,6 @@ class CalendarFragment : Fragment() {
 
     private fun onDateSelected(date: CalendarDay) {
         val selectedDate = dateToDate(date)
-        //Log.d("CalendarFragment", "Vybraný datum: $selectedDate")  // Logování vybraného data
 
         val calendar = Calendar.getInstance()
         calendar.time = selectedDate
@@ -141,8 +136,6 @@ class CalendarFragment : Fragment() {
         val startOfDay = calendar.time
         calendar.add(Calendar.DAY_OF_YEAR, 1)
         val endOfDay = calendar.time
-
-        //Log.d("CalendarFragment", "Načítání z Firebase pro datum: $startOfDay až $endOfDay")  // Logování doby načítání
 
         db.collection("vytahy")
             .whereGreaterThanOrEqualTo("plannedOP", startOfDay)
@@ -181,17 +174,11 @@ class CalendarFragment : Fragment() {
                             )
                         }
 
-
                         db.collection("prohlidky")
                             .whereGreaterThanOrEqualTo("datum", startOfDay)
                             .whereLessThanOrEqualTo("datum", endOfDay)
                             .get()
                             .addOnSuccessListener { inspectionsSnapshot ->
-                                //Log.d("CalendarFragment", "Dostala jsem se do dovnitř: $startOfDay až $endOfDay")  // Logování doby načítání
-
-                                // Loguj počet dokumentů, které byly vráceny dotazem
-                                //Log.d("CalendarFragment", "Počet prohlídek: ${inspectionsSnapshot.size()}")
-
 
                                 for (doc in inspectionsSnapshot.documents) {
                                     val vcas = doc.getBoolean("vcas") ?: false
@@ -213,8 +200,6 @@ class CalendarFragment : Fragment() {
                                 if (records.isEmpty()) {
                                     records.add("Žádné záznamy pro tento den.")
                                 }
-
-                                // Log.d("CalendarFragment", "Záznamy pro tento den: $records")  // Logování záznamů
 
                                 showRecordsDialog(records, selectedDate)
                             }
@@ -239,7 +224,6 @@ class CalendarFragment : Fragment() {
             .setPositiveButton("OK", null)
             .show()
     }
-
 
     // Třída dekorátoru
     class EventDecorator(

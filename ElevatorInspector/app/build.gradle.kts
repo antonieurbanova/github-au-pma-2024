@@ -65,7 +65,7 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     //implementation (platform("com.google.firebase:firebase-firestore"))  // Firestore SDK
 
-        // Add the dependencies for any other desired Firebase products
-        // https://firebase.google.com/docs/android/setup#available-libraries
+    // Add the dependencies for any other desired Firebase products
+    // https://firebase.google.com/docs/android/setup#available-libraries
     implementation("com.prolificinteractive:material-calendarview:1.4.3")
 }

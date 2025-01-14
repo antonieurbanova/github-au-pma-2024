@@ -6,8 +6,7 @@
     android:gravity="center"
     android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:backgroundTint="@color/background"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:backgroundTint="@color/background">
 
     <!-- Kalendář -->
     <FrameLayout

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- toappbar -->
+    <!-- TopAppBar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"
@@ -19,10 +19,6 @@
         android:background="@color/background"
         app:navigationIcon="@drawable/ic_menu"
         android:theme="@style/Base.Theme.ElevatorInspector"/>
-
-    <!-- "
-    android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar.Primary" -->
-
 
     <!-- NavHostFragment for navigation -->
     <androidx.fragment.app.FragmentContainerView
