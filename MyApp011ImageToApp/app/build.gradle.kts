@@ -4,6 +4,10 @@ plugins {
 }
 
 android {
+
+    viewBinding {
+        enable = true
+    }
     namespace = "com.example.myapp011imagetoapp"
     compileSdk = 35
 
@@ -34,6 +38,8 @@ android {
         jvmTarget = "11"
     }
 }
+
+
 
 dependencies {
 
