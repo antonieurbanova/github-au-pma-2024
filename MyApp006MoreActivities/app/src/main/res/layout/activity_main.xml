@@ -9,18 +9,28 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/etNickname"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Vyplňte přezdívku"/>
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:elevation="4dp"
+        app:title="TopAppBar prvního Fragmentu"
+        app:titleTextColor="@android:color/white" />
 
-    <Button
-        android:id="@+id/btnSecond"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="První aktivita"/>
 
-        />
+<EditText
+    android:id="@+id/etNickname"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Vyplňte přezdívku"
+    android:minHeight="48dp"/>
+
+<Button
+    android:id="@+id/btnSecond"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="První aktivita"/>
 
 </LinearLayout>

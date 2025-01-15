@@ -6,19 +6,33 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.myapp006moreactivities.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var navController: NavController
+
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //enableEdgeToEdge()
+        // Set up the Toolbar as the ActionBar
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
 
-        val btnSecond = findViewById<Button>(R.id.btnSecond)
-        val etNickname = findViewById<EditText>(R.id.etNickname)
+        setContentView(binding.root)
+
+        val btnSecond = binding.btnSecond
+        val etNickname = binding.etNickname
 
         btnSecond.setOnClickListener {
             val nickname = etNickname.text.toString() //získáme text z edit text pole
@@ -26,5 +40,10 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("NICK_NAME", nickname)
             startActivity(intent)
         }
+
+
     }
 }
+
+
+
