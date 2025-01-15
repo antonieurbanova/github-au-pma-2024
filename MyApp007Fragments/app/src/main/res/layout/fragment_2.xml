@@ -5,23 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".Fragment2">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment_2" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Dalsi text."
-        android:layout_marginTop="40dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Treti text."
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_margin="20dp"/>
 
 </FrameLayout>
