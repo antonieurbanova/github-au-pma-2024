@@ -35,6 +35,9 @@ class MainActivity : AppCompatActivity() {
     var totalQuestions = 0
     var cals = ""
 
+    var showDialog: AlertDialog? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -59,6 +62,16 @@ class MainActivity : AppCompatActivity() {
     fun NextQuestion(cal: String) {
         a = random.nextInt(10)
         b = random.nextInt(10)
+
+        // Zabránění dělení nulou a desetinnými čísly
+        if (cal == "/") {
+            // Zajistíme, že b není 0 a že a je vždy větší nebo rovno b
+            while (b == 0 || a % b != 0 || a < b) {
+                a = random.nextInt(10)
+                b = random.nextInt(10) + 1  // b musí být minimálně 1
+            }
+        }
+
         QuestionTextText!!.text = "$a $cal $b"
         indexOfCorrectAnswer = random.nextInt(4)
         answers.clear()
@@ -129,6 +142,8 @@ class MainActivity : AppCompatActivity() {
         totalQuestions = 0
         ScoreTextView!!.text = "$points/$totalQuestions"
         countDownTimer!!.start()
+        showDialog?.dismiss()
+        start()  // Začneme novou hru
     }
 
     private fun start() {
@@ -146,23 +161,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openDilog() {
+        showDialog?.dismiss()
+
         val inflate = LayoutInflater.from(this)
-        var winDialog = inflate.inflate(R.layout.win_layout, null)
+        val winDialog = inflate.inflate(R.layout.win_layout, null)
         FinalScoreTextView = winDialog.findViewById(R.id.FinalScoreTextView)
         val btnPlayAgain = winDialog.findViewById<Button>(R.id.buttonPlayAgain)
         val btnBack = winDialog.findViewById<Button>(R.id.buttonBack)
-        var dialog = AlertDialog.Builder(this)
+
+        val dialog = AlertDialog.Builder(this)
         dialog.setCancelable(false)
         dialog.setView(winDialog)
         FinalScoreTextView!!.text = "$points/$totalQuestions"
+
+        // Uložení dialogu do proměnné showDialog
+        showDialog = dialog.create()
+        showDialog?.show()  // Zobrazení dialogu
+
         btnPlayAgain.setOnClickListener {
             PlayAgain(it)
         }
         btnBack.setOnClickListener {
             onBackPressed()
         }
-        val showDialog = dialog.create()
-        showDialog.show()
+
     }
 
 }
