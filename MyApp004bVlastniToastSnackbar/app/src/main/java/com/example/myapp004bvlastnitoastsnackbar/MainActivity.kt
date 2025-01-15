@@ -11,7 +11,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+//změna
+        
         val flavorSpinner = findViewById<Spinner>(R.id.flavorSpinner)
         val thinkCheckBox = findViewById<CheckBox>(R.id.thinkCheckBox)
         val orderButton = findViewById<Button>(R.id.orderButton)
