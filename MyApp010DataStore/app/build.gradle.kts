@@ -45,4 +45,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+// Pro DataStore Preferences
+    implementation (libs.androidx.datastore.preferences)
+
+// Pro Kotlin Coroutines (pokud ještě nemáte)
+    implementation(libs.kotlinx.coroutines.android)
+
+
 }
