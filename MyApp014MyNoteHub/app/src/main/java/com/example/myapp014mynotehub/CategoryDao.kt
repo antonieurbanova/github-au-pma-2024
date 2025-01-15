@@ -14,7 +14,7 @@ interface CategoryDao {
     suspend fun insert(category: Category)
     // Aktualizuje existující kategorii
     @Update
-    suspend fun update(category: Category)
+    suspend fun updateNote(category: Category)
     // Smaže zadanou kategorii
     @Delete
     suspend fun delete(category: Category)

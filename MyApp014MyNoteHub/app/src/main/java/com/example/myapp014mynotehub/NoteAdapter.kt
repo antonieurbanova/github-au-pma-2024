@@ -70,7 +70,7 @@ import kotlinx.coroutines.launch
                         .setNegativeButton("Ne", null)
                         .show()
 
-
+                }
                     // Kliknutí na ikonu pro editaci
                     binding.iconEdit.setOnClickListener {
                         onEditClick(note)  // Vyvolání funkce pro editaci poznámky
@@ -80,4 +80,4 @@ import kotlinx.coroutines.launch
                 }
             }
         }
-    }
+

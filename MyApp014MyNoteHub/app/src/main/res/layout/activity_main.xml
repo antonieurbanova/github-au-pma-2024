@@ -11,7 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp"
+        android:minHeight="48dp" />
 
     <!-- Tlačítko pro řazení podle názvu -->
     <Button
